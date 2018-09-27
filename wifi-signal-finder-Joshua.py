@@ -28,12 +28,12 @@ def PacketHandler(pkt):
         if(pkt.addr2.find("ec:08:6b:bf:30:5a") != -1):
         ##if(1==1):
             print("WiFi signal strength:", rssi, "dBm of", pkt.addr2, pkt.info)
-            if(getLastdb() > rssi):
-                print("hot")
+            if(getLastdb() < rssi):
+                print("Hotter. Current:", str(rssi), "Last:", str(getLastdb()))
             elif(getLastdb() == rssi):
-                print("no change")
+                print("No change. Current:", str(rssi))
             else:
-                print("cold + " + str(rssi) + " " + str(getLastdb()))
+                print("Colder. Current:", str(rssi), "Last:", str(getLastdb()))
             setLastdb(rssi)
 
 
