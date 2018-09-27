@@ -3,6 +3,9 @@ import argparse
 
 
 lastdb = -100
+interface = 'wlan0mon'
+access_point = '34:fc:b9:0f:58:c0'
+
 
 
 def setLastdb(db):
@@ -26,7 +29,7 @@ def PacketHandler(pkt):
                 except:
                     rssi = -1000
                     print("Error recieved obtaining signal strength for ", pkt.addr2)
-                if(pkt.addr2.find("34:fc:b9:0f:58:c0") != -1):
+                if(pkt.addr2.find(access_point) != -1):
                 ##if(1==1):
                     print("WiFi signal strength:", rssi, "dBm for", pkt.addr2 + ",", pkt.info.decode())
                     if(getLastdb() < rssi):
@@ -39,10 +42,13 @@ def PacketHandler(pkt):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--controller', help='controller to use')
+    parser.add_argument('-i', '--interface', help='interface to use')
     parser.add_argument('-a', '--accesspoint', help='access point to track')
-    parser.add_argument('-d' '--defaults', help='display default values', action='store_true')
-    sniff(iface="wlan0mon", prn = PacketHandler)
+    parser.add_argument('-v', '--values', help='display default values for the interface and access point', action='store_true')
+    args = parser.parse_args()
+    if args.values:
+        print('Interface: %s\nAccess Point: %s' % (interface, access_point))
+    sniff(iface=transport, prn = PacketHandler)
 
 
 if __name__ == '__main__':
