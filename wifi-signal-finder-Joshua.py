@@ -6,10 +6,12 @@ lastdb = -100
 
 
 def setLastdb(db):
+    global lastdb
     lastdb = db
 
 
 def getLastdb():
+    global lastdb
     return lastdb
 
 
@@ -36,4 +38,4 @@ def PacketHandler(pkt):
             setLastdb(rssi)
 
 
-sniff(iface="wlp0s20f0u1mon", prn = PacketHandler)
+sniff(iface="wlan0mon", prn = PacketHandler)
