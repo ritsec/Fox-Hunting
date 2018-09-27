@@ -24,10 +24,10 @@ def PacketHandler(pkt):
             rssi = -(256-ord(extra[-4:-3]))
         except:
             rssi = -1000
-            print("Error recieved obtaining signal strength for " + pkt.addr2)
-        if(pkt.addr2.find("ec:08:6b:bf:30:5a") != -1):
+            print("Error recieved obtaining signal strength for ", pkt.addr2)
+        if(pkt.addr2.find("34:fc:b9:0f:58:c0") != -1):
         ##if(1==1):
-            print("WiFi signal strength:", rssi, "dBm of", pkt.addr2, pkt.info)
+            print("WiFi signal strength:", rssi, "dBm for", pkt.addr2 + ",", pkt.info.decode())
             if(getLastdb() < rssi):
                 print("Hotter. Current:", str(rssi), "Last:", str(getLastdb()))
             elif(getLastdb() == rssi):
