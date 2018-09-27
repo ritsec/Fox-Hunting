@@ -4,15 +4,18 @@ from scapy.all import *
 # Scope issue, doesn't update
 lastdb = -100
 
+
 def setLastdb(db):
     lastdb = db
+
 
 def getLastdb():
     return lastdb
 
-def PacketHandler(pkt) :
-  if pkt.haslayer(Dot11) :
-    if pkt.type == 0 and pkt.subtype == 8 :
+
+def PacketHandler(pkt):
+  if pkt.haslayer(Dot11):
+    if pkt.type == 0 and pkt.subtype == 8:
       if (pkt.haslayer(Dot11Beacon) or pkt.haslayer(Dot11ProbeResp)):
         try:
             extra = pkt.notdecoded
@@ -31,4 +34,6 @@ def PacketHandler(pkt) :
             else:
                 print("cold + " + str(rssi) + " " + str(getLastdb()))
             setLastdb(rssi)
+
+
 sniff(iface="wlp0s20f0u1mon", prn = PacketHandler)
