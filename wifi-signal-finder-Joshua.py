@@ -1,5 +1,7 @@
 from scapy.all import *
 
+
+# Scope issue, doesn't update
 lastdb = -100
 
 def setLastdb(db):
@@ -14,6 +16,7 @@ def PacketHandler(pkt) :
       if (pkt.haslayer(Dot11Beacon) or pkt.haslayer(Dot11ProbeResp)):
         try:
             extra = pkt.notdecoded
+            # Investigate RSSI
             rssi = -(256-ord(extra[-4:-3]))
         except:
             rssi = -1000
