@@ -1,7 +1,6 @@
 from scapy.all import *
 
 
-# Scope issue, doesn't update
 lastdb = -100
 
 
