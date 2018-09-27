@@ -4,11 +4,11 @@
 - [ ] Parameters / argument parsing
     - [ ] Access point
     - [ ] Controller  
-- [ ] Scope issues
+- [x] Scope issues
 
 
 ### Chris
-- [ ] Scope issues
+- [x] Scope issues
 - [ ] Misc
 
 
