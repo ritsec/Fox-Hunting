@@ -6,10 +6,12 @@ lastdb = -100
 
 
 def setLastdb(db):
+    global lastdb
     lastdb = db
 
 
 def getLastdb():
+    global lastdb
     return lastdb
 
 
