@@ -36,10 +36,15 @@ def broadcast():
     sendp(probePacket, verbose = False)
     time.sleep(10)
 
-if len(sys.argv)==3:
+def main():
+  if len(sys.argv)!=3:
+    print("Usage: python3 active-signal-finder-Chris.py <interface> <target BSSID>")
+    return
+
   broadcastThread = threading.Thread(target=broadcast)
   broadcastThread.start()
   
   sniff(iface=sys.argv[1], prn = PacketHandler)
-else:
-  print("Usage: python3 active-signal-finder-Chris.py <interface> <target BSSID>")
+    
+if __name__ == "__main__":
+    main()
