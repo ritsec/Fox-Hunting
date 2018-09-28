@@ -8,7 +8,7 @@
 
 
 ### Chris
-- [ ] Scope issues
+- [X] Scope issues
 - [ ] Misc
 
 
