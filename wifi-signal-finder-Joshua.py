@@ -42,13 +42,13 @@ def main():
     parser.add_argument('-a', '--accesspoint', help='access point to track')
     parser.add_argument('-v', '--values', help='display default values for the interface and access point', action='store_true')
     args = parser.parse_args()
+    if args.values:
+        print('Interface: %s\nAccess Point: %s' % (interface, access_point))
     if args.interface:
         interface = args.interface
     if args.accesspoint:
         access_point = args.accesspoint
-    if args.values:
-        print('Interface: %s\nAccess Point: %s' % (interface, access_point))
-    sniff(iface=transport, prn = PacketHandler)
+    sniff(iface=interface, prn=PacketHandler)
 
 
 if __name__ == '__main__':
