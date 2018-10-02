@@ -9,7 +9,7 @@
 
 ## Usage
 ```
-usage: wifi-signal-finder-Joshua.py [-h] [-i INTERFACE] [-a ACCESSPOINT] [-v]
+usage: wifi-signal-finder.py [-h] [-i INTERFACE] [-a ACCESSPOINT] [-v]
 
 optional arguments:
   -h, --help            show this help message and exit
