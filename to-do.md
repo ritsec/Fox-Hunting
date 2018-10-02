@@ -1,10 +1,10 @@
 # To Do
 
 ### Michael
-- [ ] Parameters / argument parsing
-    - [ ] Access point
-    - [ ] Controller  
-- [ ] Scope issues
+- [x] Parameters / argument parsing
+    - [x] Access point
+    - [x] Controller  
+- [x] Scope issues
 
 
 ### Chris
