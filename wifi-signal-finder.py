@@ -48,7 +48,7 @@ def main():
         interface = args.interface
     if args.accesspoint:
         access_point = args.accesspoint
-    sniff(iface=interface, prn=PacketHandler)
+    sniff(iface=interface, prn=PacketHandler, store=0)
 
 
 if __name__ == '__main__':
