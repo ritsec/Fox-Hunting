@@ -17,7 +17,8 @@ def getLastdb():
 
 
 def PacketHandler(pkt):
-  if pkt.haslayer(Dot11) and pkt.type == 0 and pkt.subtype == 8:
+  #print(pkt.summary())
+  if pkt.haslayer(Dot11) and (pkt.type == 0 or pkt.type == "Management" ) and pkt.subtype == 8:
     if pkt.addr3 == sys.argv[2]:
       rssi = -(256-ord(pkt.notdecoded[-4:-3]))
       message = str(rssi-getLastdb()) + " dBm "
