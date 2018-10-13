@@ -4,7 +4,7 @@ from access_points import get_scanner
 
 
 def scan(all, clear, tracked_bssid):
-    last_quality = 0
+    last_quality, message = 0, ''
     wifi_scanner = get_scanner()
     print('All Access Points:\n%s\n' % wifi_scanner.get_access_points() if all else '', end='')
     print('Tracking %s' % tracked_bssid)
@@ -13,11 +13,12 @@ def scan(all, clear, tracked_bssid):
             for ap in wifi_scanner.get_access_points():
                 if ap.bssid == tracked_bssid:
                     if (last_quality < ap.quality):
-                        print('\rHotter | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
+                        message = 'Hotter'
                     elif (last_quality > ap.quality):
-                        print('\rColder | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
+                        message = 'Colder'
                     else:
-                        print('\rSame   | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
+                        message = 'Same  '
+                    print('%s%s  | %s @ %s' % ('\r' if clear else '', message, ap, datetime.datetime.now().time()), end=('' if clear else '\n'))
                     last_quality = ap.quality
     except KeyboardInterrupt:
         print('Halting Scanning')
