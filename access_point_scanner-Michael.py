@@ -1,4 +1,5 @@
 import argparse
+import datetime
 from access_points import get_scanner
 
 
@@ -12,11 +13,11 @@ def scan(tracked_bssid):
             for ap in wifi_scanner.get_access_points():
                 if ap.bssid == tracked_bssid:
                     if (last_quality < ap.quality):
-                        print('Hotter | %s' % ap)
+                        print('Hotter | %s @ %s' % (ap, datetime.datetime.now().time()))
                     elif (last_quality > ap.quality):
-                        print('Colder | %s' % ap)
+                        print('Colder | %s @ %s' % (ap, datetime.datetime.now().time()))
                     else:
-                        print('Same   | %s' % ap)
+                        print('Same   | %s @ %s' % (ap, datetime.datetime.now().time()))
                     last_quality = ap.quality
     except KeyboardInterrupt:
         print('Halting Scanning')
