@@ -6,7 +6,7 @@
 
 ## Usage
 ```
-usage: access_point_scanner-Michael.py [-h] bssid
+usage: access_point_tracker.py [-h] bssid
 
 positional arguments:
   bssid       the bssid to track
