@@ -1,5 +1,9 @@
 # Fox-Hunting
 
+## Idea
+You have a rogue access point.  You take the bssid, and use the signal strength to locate said access point.
+
+
 ## Initialization
 `pip3 install access_points --user`
 
