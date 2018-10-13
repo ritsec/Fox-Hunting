@@ -1,7 +1,13 @@
 # Fox-Hunting
 
 ## Initialization
-* `pip3 install access_points --user`
+`pip3 install access_points --user`
+
+On linux systems you might want to install nmcli (recommended) or iwlist:
+```
+apt-get install network-manager # Ubuntu
+pacman -S networkmanager        # Arch Linux
+```
 
 
 ## Usage
