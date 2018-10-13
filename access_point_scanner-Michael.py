@@ -1,7 +1,8 @@
+import argparse
 from access_points import get_scanner
 
 
-def main():
+def scan(tracked_bssid):
     tracked_bssid = 'a8:bd:27:8f:01:53'
     last_quality = 0;
     wifi_scanner = get_scanner()
@@ -18,7 +19,13 @@ def main():
                         print('Same')
                     last_quality = ap.quality
     except KeyboardInterrupt:
-        print('Halting Scanning')
+        print('\nHalting Scanning')
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('bssid', help='the bssid to track', type=str)
+    args = parser.parse_args()
+    scan(args.bssid)
 
 
 
