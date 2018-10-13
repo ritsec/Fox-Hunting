@@ -18,7 +18,7 @@ def scan(all, clear, tracked_bssid):
                         message = 'Colder'
                     else:
                         message = 'Same  '
-                    print('%s%s  | %s @ %s' % ('\r' if clear else '', message, ap, datetime.datetime.now().time()), end=('' if clear else '\n'))
+                    print('%s%s (%02d) | %s @ %s' % ('\r' if clear else '', message, (ap.quality - last_quality), ap, datetime.datetime.now().time()), end=('' if clear else '\n'))
                     last_quality = ap.quality
     except KeyboardInterrupt:
         print('Halting Scanning')
