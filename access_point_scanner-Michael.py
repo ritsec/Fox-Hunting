@@ -3,7 +3,6 @@ from access_points import get_scanner
 
 
 def scan(tracked_bssid):
-    tracked_bssid = 'a8:bd:27:8f:01:53'
     last_quality = 0;
     wifi_scanner = get_scanner()
     print('All Access Points:\n%s' % wifi_scanner.get_access_points())
@@ -17,7 +16,7 @@ def scan(tracked_bssid):
                     elif (last_quality > ap.quality):
                         print('Colder | %s' % ap)
                     else:
-                        print('Same | %s' % ap)
+                        print('Same   | %s' % ap)
                     last_quality = ap.quality
     except KeyboardInterrupt:
         print('Halting Scanning')
