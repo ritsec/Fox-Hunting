@@ -3,21 +3,21 @@ import datetime
 from access_points import get_scanner
 
 
-def scan(tracked_bssid):
+def scan(all, clear, tracked_bssid):
     last_quality = 0
     wifi_scanner = get_scanner()
-    print('All Access Points:\n%s' % wifi_scanner.get_access_points())
+    print('All Access Points:\n%s\n' % wifi_scanner.get_access_points() if all else '', end='')
     print('Tracking %s' % tracked_bssid)
     try:
         while True:
             for ap in wifi_scanner.get_access_points():
                 if ap.bssid == tracked_bssid:
                     if (last_quality < ap.quality):
-                        print('Hotter | %s @ %s' % (ap, datetime.datetime.now().time()))
+                        print('\rHotter | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
                     elif (last_quality > ap.quality):
-                        print('Colder | %s @ %s' % (ap, datetime.datetime.now().time()))
+                        print('\rColder | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
                     else:
-                        print('Same   | %s @ %s' % (ap, datetime.datetime.now().time()))
+                        print('\rSame   | %s @ %s' % (ap, datetime.datetime.now().time()), end='')
                     last_quality = ap.quality
     except KeyboardInterrupt:
         print('Halting Scanning')
@@ -26,8 +26,10 @@ def scan(tracked_bssid):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('bssid', help='the bssid to track', type=str)
+    parser.add_argument('-a', '--all', help='print all available access points', action='store_true')
+    parser.add_argument('-c', '--clear', help='clear tracking line on each update', action='store_true')
     args = parser.parse_args()
-    scan(args.bssid)
+    scan(args.all, args.clear, args.bssid)
 
 
 if __name__ == '__main__':
