@@ -21,12 +21,12 @@ def scan(tracked_bssid):
     except KeyboardInterrupt:
         print('Halting Scanning')
 
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('bssid', help='the bssid to track', type=str)
     args = parser.parse_args()
     scan(args.bssid)
-
 
 
 if __name__ == '__main__':
