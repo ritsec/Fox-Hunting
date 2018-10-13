@@ -6,7 +6,7 @@ from access_points import get_scanner
 def scan(all, clear, same, tracked_bssid):
     last_quality, message = 0, ''
     wifi_scanner = get_scanner()
-    print('All Access Points:\n%s\n' % wifi_scanner.get_access_points() if all else '', end='')
+    #print('All Access Points:\n%s\n' % wifi_scanner.get_access_points() if all else '', end='')
     print('Tracking %s' % tracked_bssid)
     try:
         while True:
@@ -33,7 +33,13 @@ def main():
     parser.add_argument('-c', '--clear', help='clear tracking line on each update', action='store_true')
     parser.add_argument('-s', '--same', help='hide same updates', action='store_true')
     args = parser.parse_args()
-    scan(args.all, args.clear, args.same, args.bssid)
+    if args.all:
+        wifi_scanner = get_scanner()
+        for i in wifi_scanner.get_access_points():
+            print(i.ssid + ":" + i.bssid)
+    
+    else:
+        scan(args.all, args.clear, args.same, args.bssid)
 
 
 if __name__ == '__main__':
