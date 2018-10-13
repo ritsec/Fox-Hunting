@@ -4,7 +4,7 @@ from access_points import get_scanner
 
 
 def scan(tracked_bssid):
-    last_quality = 0;
+    last_quality = 0
     wifi_scanner = get_scanner()
     print('All Access Points:\n%s' % wifi_scanner.get_access_points())
     print('Tracking %s' % tracked_bssid)
