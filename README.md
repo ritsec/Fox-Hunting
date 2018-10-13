@@ -12,11 +12,13 @@ pacman -S networkmanager        # Arch Linux
 
 ## Usage
 ```
-usage: access_point_tracker.py [-h] bssid
+usage: access_point_tracker.py [-h] [-a] [-c] bssid
 
 positional arguments:
-  bssid       the bssid to track
+  bssid        the bssid to track
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help   show this help message and exit
+  -a, --all    print all available access points
+  -c, --clear  clear tracking line on each update
 ```
